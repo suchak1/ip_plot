@@ -1,11 +1,14 @@
+import os
 import numpy as np
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
-from creds import getLogin
 import requests
 import random
 
+
+def build_check(build):
+    return build == 'dev'
 
 def read_ip_addrs(filename):
     with open(filename) as fp:

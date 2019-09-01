@@ -1,3 +1,5 @@
 language: python
 python: 3.6
+env:
+  - build=dev
 script: python3 plot.py || python plot.py
