@@ -7,17 +7,17 @@ import requests
 import random
 
 
-def build_check(build):
-    return build == 'dev'
+def dev_build():
+    return os.environ['build'] == 'dev'
+
 
 def read_ip_addrs(filename):
     with open(filename) as fp:
         return fp.read().splitlines()
 
 
-def ip2geo(addr):
+def ip2geo(addr, api_key):
     url = 'http://api.ipstack.com/'
-    api_key = getLogin('ipstack')['api_key']
     endpoint = url + addr + '?access_key=' + api_key
 
     response = requests.get(endpoint)
@@ -29,12 +29,12 @@ def ip2geo(addr):
     return geo
 
 
-def get_points(addrs):
+def get_points(addrs, api_key):
     lats = []
     longs = []
 
     for addr in addrs:
-        geo = ip2geo(addr)
+        geo = ip2geo(addr, api_key)
         lats.append(geo['lat'])
         longs.append(geo['long'])
 
@@ -55,10 +55,17 @@ def gpd_plot(points):
 
 
 def main():
-    filename = 'mock_data1.txt' if random.random() < 0.5 else 'mock_data2.txt'
+    if dev_build():
+        ipstack = os.environ('ipstack')
+    else:
+        from creds import getLogin
+        ipstack = getLogin('ipstack')['api_key']
+
+    filename = 'mock_data.txt'
     print('Reading ip addresses from mock data...')
     addrs = read_ip_addrs(filename)
     print('Done reading.')
+
     print('Shuffling mock data...')
     random.shuffle(addrs)
     choose = 10
@@ -72,7 +79,7 @@ def main():
     # df = pd.DataFrame({'lat': [geo['lat']], 'long': [geo['long']]})
     # print(data)
 
-    # geos = get_points(data)
+    # geos = get_points(data, ipstack)
     geos = {
             'lats': [
                 37.56100082397461, None, 36.078330993652344, 42.50128936767578,
@@ -87,6 +94,7 @@ def main():
     gpd_plot(geos)
     print('Success.')
     return 0
+
 
 main()
 
