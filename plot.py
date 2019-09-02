@@ -56,7 +56,7 @@ def gpd_plot(points):
 
 def main():
     if dev_build():
-        ipstack = os.environ('ipstack')
+        ipstack = os.environ['ipstack']
     else:
         from creds import getLogin
         ipstack = getLogin('ipstack')['api_key']
