@@ -1,12 +1,13 @@
-import matplotlib as mpl
-# mpl.use('Agg')
-import matplotlib.pyplot as plt
 import os
-import numpy as np
 import pandas as pd
 import geopandas as gpd
 import requests
 import random
+import matplotlib as mpl
+if os.environ.get('DISPLAY', '') == '':
+    print('no display found. Using non-interactive Agg backend')
+    mpl.use('Agg')
+import matplotlib.pyplot as plt
 
 
 def dev_build():
