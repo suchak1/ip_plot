@@ -10,8 +10,6 @@ before_install:
   - conda update conda
   - conda info -a
 install:
-  - conda install -c conda-forge conda_deps
-  - conda_deps "$PWD" > environment.yml
   - conda create -n dev
   - source activate dev
   - conda config --env --add channels conda-forge
