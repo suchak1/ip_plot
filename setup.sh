@@ -1,13 +1,16 @@
 #!/bin/bash
 
 sudo apt-get update
-wget https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O anaconda.sh
-chmod +x anaconda.sh
-./anaconda.sh -b
-export PATH="$HOME/anaconda3/bin:$PATH"
-hash -r
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+chmod +x miniconda.sh
+./miniconda.sh -b
+export PATH=/home/travis/miniconda3/bin:$PATH
 conda config --set always_yes yes --set changeps1 no
 conda update conda
 conda info -a
-conda env create -n dev -f environment.yml
+conda create -n dev
+source activate dev
+conda config --env --add channels conda-forge
+conda config --env --set channel_priority strict
+conda env update -n dev -f environment.yml
 source activate dev
