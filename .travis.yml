@@ -1,3 +1,23 @@
 language: python
 python: 3.7
+before_install:
+  - sudo apt-get update
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+  - chmod +x miniconda.sh
+  - ./miniconda.sh -b
+  - export PATH=/home/travis/miniconda3/bin:$PATH
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update conda
+  - conda info -a
+install:
+  - conda create -n dev
+  - source activate dev
+  - conda config --env --add channels conda-forge
+  - conda config --env --set channel_priority strict
+  - conda env update -n dev -f environment.yml
+  - source activate dev
+env:
+  global:
+  - build='dev'
+  - secure: Peb+XFyLAQvmuzXccAJchirkosOQiu4rGemIZ/qXL3EhzLsomFVm70U3MsKNv8k6X7wLNUYMTiYZ1f7mYxXvW2ESN9zLGJdZYAtav1mXuHQlbctyvTdwFCWjNw0OpgLCtjHBgljl8mmc0/J96R8hBX+JuZsc178AnOx09qLSCx550WlPSnSZRH2tJboUehgkyaA0/qiDsy1fO1DZS5QN5Y6i3wFH8vqss6OwsANjn9LO9J7SXSgzLDORSPE3llT5K8sbrblE8HtNbs9cS6LhfrvnT7lIhpoMQB1xlWWxO4o15QcegsaPurYSvLrLrSF867hhzCRC9c0EwJFXdT5noxTcpgKBuMWGlk/H6wvufyQXHqEzBG4A4EQrcY7EltWwqrp7YR2BKEPDSulWjyTHcz4UyP073LQhiD04a7WSqdD5J12Dm4aKDUTvqSzWMO2axg+mH4wKI1GYBXUKUYdRY7q+nsOhb3M+gISwSnoXqy2MhEPwtiyUj9VCFxfFq0g+Q7SWhyo0PKroLdEQ0RaKBHD3DkglOnuUiSDhPDYm6XSmx6VskE14dP+OdgftYG/gdFOy0FFvsWAigP3l+kb4D3rlSEV7+y+U1TmqduBJP+sjHqAfWwKrjuFe3boV3i4gwnwq1PJU4F1AVXALiWnjbs8yR2JVHDqr1ckDIJ+CP9s=
 script: python3 plot.py || python plot.py

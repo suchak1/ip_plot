@@ -1,0 +1,15 @@
+
+name: dev
+
+channels:
+ - conda-forge
+ - bioconda
+ - defaults
+
+dependencies:
+ - python
+ - geopandas
+ - descartes
+ - matplotlib
+ - pandas
+ - requests
