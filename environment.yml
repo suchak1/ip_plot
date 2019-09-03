@@ -9,6 +9,7 @@ channels:
 dependencies:
  - python
  - geopandas
+ - descartes
  - matplotlib
  - pandas
  - requests
