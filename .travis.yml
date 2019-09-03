@@ -7,7 +7,7 @@ before_install:
   - ./anaconda.sh -b
   - export PATH=/home/travis/anaconda3/bin:$PATH
   - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
+  - conda update conda
   - conda info -a
 install:
   - conda install -c conda-forge conda_deps
