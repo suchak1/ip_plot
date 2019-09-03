@@ -13,7 +13,7 @@ install:
   - conda install -c conda-forge conda_deps
   - conda_deps "$PWD" > environment.yml
   - conda env create -n dev -f environment.yml
-  - conda activate dev
+  - source activate dev
 env:
   global:
   - build='dev'
