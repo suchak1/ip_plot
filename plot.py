@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 import geopandas as gpd
-import geoip2
 import requests
 import random
 import matplotlib as mpl
