@@ -2,3 +2,4 @@ matplotlib==2.1.1
 geopandas==0.5.1
 pandas==0.22.0
 requests==2.18.4
+descartes==1.1.0
