@@ -1,11 +1,12 @@
 #!/bin/bash
 
 sudo apt-get update
-wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-chmod +x miniconda.sh
-./miniconda.sh -b
-sudo chown -R $USER /home/travis/miniconda3
-export PATH=/home/travis/miniconda3/bin:$PATH
+wget https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O anaconda.sh
+chmod +x anaconda.sh
+bash ./anaconda.sh -b -p "$HOME/anaconda3"
+sudo chown -R travis "$HOME/anaconda3"
+export PATH="$HOME/anaconda3/bin:$PATH"
+hash -r
 conda config --set always_yes yes --set changeps1 no
 conda update conda
 conda info -a
