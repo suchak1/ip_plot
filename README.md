@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/suchak1/ip_plot.png?branch=master)](https://travis-ci.org/suchak1/ip_plot)
 [![Linux](https://img.shields.io/badge/os-Linux-1f425f.svg)](https://shields.io/)
-[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
+[![Python 3.7](https://img.shields.io/badge/python-3.7-red.svg)](https://www.python.org/downloads/release/python-370/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 [![version](https://img.shields.io/github/v/tag/suchak1/ip_plot)](https://github.com/suchak1/ip_plot/tags)
 
