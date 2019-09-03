@@ -16,7 +16,7 @@ install:
   - source activate dev
   - conda config --env --add channels conda-forge
   - conda config --env --set channel_priority strict
-  - conda env update -f environment.yml
+  - conda env update -n dev -f environment.yml
   - source activate dev
 env:
   global:
